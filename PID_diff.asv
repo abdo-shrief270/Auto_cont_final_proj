@@ -22,7 +22,7 @@ function varargout = PID_diff(varargin)
 
 % Edit the above text to modify the response to help PID_diff
 
-% Last Modified by GUIDE v2.5 25-Jan-2024 18:31:18
+% Last Modified by GUIDE v2.5 25-Jan-2024 18:21:57
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -57,8 +57,10 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
+
 def_btn_Callback(hObject, eventdata, handles);
 sub_btn_Callback(hObject, eventdata, handles);
+
 
 % --- Outputs from this function are returned to the command line.
 function varargout = PID_diff_OutputFcn(hObject, eventdata, handles)
@@ -264,11 +266,9 @@ cla(handles.model_2_axes);
 cla(handles.model_3_axes);
 cla(handles.model_4_axes);
 cla(handles.model_all_axes);
-
-fun_Callback(hObject, eventdata, handles);
-set(handles.gs_text,'string','(2*s+15)/(s^3+9*s^2+23*s+15)');
-
-
+numden_Callback(hObject, eventdata, handles);
+set(handles.num_p_text,'string',num2str([0 0 2 15]));
+set(handles.den_p_text,'string',num2str([1 9 23 15]));
 set(handles.kp_text,'string','10');
 set(handles.ki_text,'string','3');
 set(handles.kd_text,'string','5');
@@ -287,19 +287,13 @@ set(handles.dis_out_time_text,'string','5');
 
 % --- Executes on button press in sub_btn.
 function sub_btn_Callback(hObject, eventdata, handles)
-set(handles.clr_btn,'enable','off');
-set(handles.def_btn,'enable','off');
-set(handles.sub_btn,'enable','off');
-
 s=tf('s');
 if handles.numden.Value ==1
     NUM_P=str2num(get(handles.num_p_text,'string'));
     DEN_P=str2num(get(handles.den_p_text,'string'));
 else
-    Gs=tf(eval(get(handles.gs_text,'string')));
-    [NUM_P,DEN_P]=tfdata(Gs);
-    NUM_P=NUM_P{1};
-    DEN_P=DEN_P{1};
+    Gs=tf(eval(get(handles.gs_fun_edit,'string')));
+    [NUM_P,DEN_P]=tf
 end
 
 kp=str2num(get(handles.kp_text,'string'));
@@ -369,9 +363,7 @@ title(handles.model_all_axes,'Step Response Of All Models');
 xlabel(handles.model_all_axes,'Time [sec]');
 ylabel(handles.model_all_axes,'Amplitude');
 legend(handles.model_all_axes,'Model 1','Model 2','Model 3','Model 4','Planet Response','NumColumns',2,'location','best');
-set(handles.clr_btn,'enable','on');
-set(handles.def_btn,'enable','on');
-set(handles.sub_btn,'enable','on');
+
 
 
 function st_text_Callback(hObject, eventdata, handles)

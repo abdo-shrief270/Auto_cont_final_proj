@@ -22,7 +22,7 @@ function varargout = auto_cont_final_proj(varargin)
 
 % Edit the above text to modify the response to help auto_cont_final_proj
 
-% Last Modified by GUIDE v2.5 27-Dec-2023 00:08:29
+% Last Modified by GUIDE v2.5 25-Jan-2024 18:17:44
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -490,3 +490,30 @@ set(handles.gs_lab,'enable','on');
 % --- Executes on button press in pid_diff_btn.
 function pid_diff_btn_Callback(hObject, eventdata, handles)
 PID_diff
+
+
+% --- Executes on key press with focus on fun and none of its controls.
+function fun_KeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to fun (see GCBO)
+% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.UICONTROL)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- If Enable == 'on', executes on mouse press in 5 pixel border.
+% --- Otherwise, executes on mouse press in 5 pixel border or over fun.
+function fun_ButtonDownFcn(hObject, eventdata, handles)
+% hObject    handle to fun (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in fun.
+function radiobutton9_Callback(hObject, eventdata, handles)
+% hObject    handle to fun (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of fun

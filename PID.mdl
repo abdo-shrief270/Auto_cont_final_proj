@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.13"
+    ComputedModelVersion    "1.14"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -94,28 +94,15 @@ Model {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[1820.0, 806.0]
-	ZoomFactor		[1.0]
-	Offset			[-75.274962842464447, 282.12814883887768]
-	SceneRectInView		[-75.274962842464447, 282.12814883887768, 1820.0, 806.0]
+	ZoomFactor		[0.8]
+	Offset			[-478.09836156637789, -169.30813921335221]
+	SceneRectInView		[-478.09836156637789, -169.30813921335221, 2275.0, 1007.5]
       }
       Array {
 	Type			"Simulink.DockComponentInfo"
 	Dimension		2
 	Object {
 	  $ObjectID		  7
-	  Type			  "GLUE2:PropertyInspector"
-	  ID			  "Property Inspector"
-	  Visible		  [1]
-	  CreateCallback	  ""
-	  UserData		  ""
-	  Floating		  [0]
-	  DockPosition		  "Right"
-	  Width			  [640]
-	  Height		  [480]
-	  Minimized		  "On"
-	}
-	Object {
-	  $ObjectID		  8
 	  Type			  "Simulink:Editor:ReferencedFiles"
 	  ID			  "Referenced Files"
 	  Visible		  [0]
@@ -126,6 +113,19 @@ Model {
 	  Width			  [640]
 	  Height		  [480]
 	  Minimized		  "Unset"
+	}
+	Object {
+	  $ObjectID		  8
+	  Type			  "GLUE2:PropertyInspector"
+	  ID			  "Property Inspector"
+	  Visible		  [1]
+	  CreateCallback	  ""
+	  UserData		  ""
+	  Floating		  [0]
+	  DockPosition		  "Right"
+	  Width			  [640]
+	  Height		  [480]
+	  Minimized		  "On"
 	}
 	PropName		"DockComponentsInfo"
       }
@@ -156,9 +156,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "AbdelRaHmaN ShRieF"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Dec 27 00:06:04 2023"
-  RTWModifiedTimeStamp	  625534764
-  ModelVersionFormat	  "%<AutoIncrement:1.13>"
+  LastModifiedDate	  "Thu Jan 25 18:35:49 2024"
+  RTWModifiedTimeStamp	  628106873
+  ModelVersionFormat	  "%<AutoIncrement:1.14>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -1157,13 +1157,17 @@ Model {
       VectorParams1D	      on
     }
     Block {
-      BlockType		      SignalGenerator
-      WaveForm		      "sine"
-      TimeSource	      "Use simulation time"
-      Amplitude		      "1"
-      Frequency		      "1"
-      Units		      "Hertz"
-      VectorParams1D	      on
+      BlockType		      Saturate
+      UpperLimit	      "0.5"
+      LowerLimit	      "-0.5"
+      LinearizeAsGain	      on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
     }
     Block {
       BlockType		      Step
@@ -1230,9 +1234,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "109"
+    SIDHighWatermark	    "117"
     SimulinkSubDomain	    "Simulink"
     Block {
       BlockType		      Clock
@@ -1267,6 +1271,20 @@ Model {
       ZOrder		      386
       BlockRotation	      270
       NameLocation	      "right"
+    }
+    Block {
+      BlockType		      Derivative
+      Name		      "Derivative3"
+      SID		      "112"
+      Position		      [-345, 170, -315, 200]
+      ZOrder		      417
+    }
+    Block {
+      BlockType		      Derivative
+      Name		      "Derivative4"
+      SID		      "114"
+      Position		      [-345, 50, -315, 80]
+      ZOrder		      419
     }
     Block {
       BlockType		      Reference
@@ -1584,66 +1602,6 @@ Model {
       Gain		      "kp"
     }
     Block {
-      BlockType		      SignalGenerator
-      Name		      "Input_Disturbance1"
-      SID		      "88"
-      Ports		      [0, 1]
-      Position		      [175, 100, 205, 130]
-      ZOrder		      396
-      WaveForm		      "square"
-      Amplitude		      "dis_in_amp"
-      Frequency		      "dis_in_freq"
-      Units		      "rad/sec"
-    }
-    Block {
-      BlockType		      SignalGenerator
-      Name		      "Input_Disturbance2"
-      SID		      "91"
-      Ports		      [0, 1]
-      Position		      [175, 440, 205, 470]
-      ZOrder		      399
-      WaveForm		      "square"
-      Amplitude		      "dis_in_amp"
-      Frequency		      "dis_in_freq"
-      Units		      "rad/sec"
-    }
-    Block {
-      BlockType		      SignalGenerator
-      Name		      "Input_Disturbance3"
-      SID		      "83"
-      Ports		      [0, 1]
-      Position		      [920, 100, 950, 130]
-      ZOrder		      390
-      WaveForm		      "square"
-      Amplitude		      "dis_in_amp"
-      Frequency		      "dis_in_freq"
-      Units		      "rad/sec"
-    }
-    Block {
-      BlockType		      SignalGenerator
-      Name		      "Input_Disturbance4"
-      SID		      "87"
-      Ports		      [0, 1]
-      Position		      [915, 450, 945, 480]
-      ZOrder		      395
-      WaveForm		      "square"
-      Amplitude		      "dis_in_amp"
-      Frequency		      "dis_in_freq"
-      Units		      "rad/sec"
-    }
-    Block {
-      BlockType		      SignalGenerator
-      Name		      "Input_Disturbance5"
-      SID		      "100"
-      Ports		      [0, 1]
-      Position		      [550, 820, 580, 850]
-      ZOrder		      410
-      WaveForm		      "square"
-      Amplitude		      "dis_in_amp"
-      Frequency		      "dis_in_freq"
-      Units		      "rad/sec"
-    }
-    Block {
       BlockType		      Integrator
       Name		      "Integrator"
       SID		      "30"
@@ -1666,66 +1624,6 @@ Model {
       Ports		      [1, 1]
       Position		      [855, 165, 885, 195]
       ZOrder		      385
-    }
-    Block {
-      BlockType		      SignalGenerator
-      Name		      "Output_Disturbance1"
-      SID		      "11"
-      Ports		      [0, 1]
-      Position		      [480, 100, 510, 130]
-      ZOrder		      320
-      WaveForm		      "square"
-      Amplitude		      "dis_out_amp"
-      Frequency		      "dis_out_freq"
-      Units		      "rad/sec"
-    }
-    Block {
-      BlockType		      SignalGenerator
-      Name		      "Output_Disturbance2"
-      SID		      "20"
-      Ports		      [0, 1]
-      Position		      [450, 440, 480, 470]
-      ZOrder		      333
-      WaveForm		      "square"
-      Amplitude		      "dis_out_amp"
-      Frequency		      "dis_out_freq"
-      Units		      "rad/sec"
-    }
-    Block {
-      BlockType		      SignalGenerator
-      Name		      "Output_Disturbance3"
-      SID		      "70"
-      Ports		      [0, 1]
-      Position		      [1190, 100, 1220, 130]
-      ZOrder		      381
-      WaveForm		      "square"
-      Amplitude		      "dis_out_amp"
-      Frequency		      "dis_out_freq"
-      Units		      "rad/sec"
-    }
-    Block {
-      BlockType		      SignalGenerator
-      Name		      "Output_Disturbance4"
-      SID		      "36"
-      Ports		      [0, 1]
-      Position		      [1195, 450, 1225, 480]
-      ZOrder		      355
-      WaveForm		      "square"
-      Amplitude		      "dis_out_amp"
-      Frequency		      "dis_out_freq"
-      Units		      "rad/sec"
-    }
-    Block {
-      BlockType		      SignalGenerator
-      Name		      "Output_Disturbance5"
-      SID		      "101"
-      Ports		      [0, 1]
-      Position		      [855, 820, 885, 850]
-      ZOrder		      408
-      WaveForm		      "square"
-      Amplitude		      "dis_out_amp"
-      Frequency		      "dis_out_freq"
-      Units		      "rad/sec"
     }
     Block {
       BlockType		      RandomNumber
@@ -1788,48 +1686,51 @@ Model {
       SampleTime	      "1/noise_freq"
     }
     Block {
+      BlockType		      Saturate
+      Name		      "Saturation"
+      SID		      "116"
+      Position		      [-270, 170, -240, 200]
+      ZOrder		      421
+      UpperLimit	      "dis_in_amp"
+      LowerLimit	      "0"
+    }
+    Block {
+      BlockType		      Saturate
+      Name		      "Saturation1"
+      SID		      "117"
+      Position		      [-270, 50, -240, 80]
+      ZOrder		      422
+      UpperLimit	      "dis_out_amp"
+      LowerLimit	      "0"
+    }
+    Block {
       BlockType		      Step
       Name		      "Step"
       SID		      "4"
-      Position		      [0, 175, 30, 205]
+      Position		      [-185, 170, -155, 200]
       ZOrder		      312
       AttributesFormatString  "%<Name>"
+      After		      "sp"
       SampleTime	      "0"
     }
     Block {
       BlockType		      Step
       Name		      "Step1"
-      SID		      "24"
-      Position		      [0, 500, 30, 530]
-      ZOrder		      329
+      SID		      "113"
+      Position		      [-400, 170, -370, 200]
+      ZOrder		      418
       AttributesFormatString  "%<Name>"
+      Time		      "dis_in_time"
       SampleTime	      "0"
     }
     Block {
       BlockType		      Step
       Name		      "Step2"
-      SID		      "77"
-      Position		      [735, 165, 765, 195]
-      ZOrder		      377
+      SID		      "115"
+      Position		      [-400, 50, -370, 80]
+      ZOrder		      420
       AttributesFormatString  "%<Name>"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Step
-      Name		      "Step3"
-      SID		      "47"
-      Position		      [740, 515, 770, 545]
-      ZOrder		      351
-      AttributesFormatString  "%<Name>"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Step
-      Name		      "Step4"
-      SID		      "103"
-      Position		      [505, 890, 535, 920]
-      ZOrder		      404
-      AttributesFormatString  "%<Name>"
+      Time		      "dis_out_time"
       SampleTime	      "0"
     }
     Block {
@@ -2100,13 +2001,6 @@ Model {
       SampleTime	      "-1"
     }
     Line {
-      ZOrder		      2
-      SrcBlock		      "Step"
-      SrcPort		      1
-      DstBlock		      "Sum"
-      DstPort		      1
-    }
-    Line {
       ZOrder		      4
       SrcBlock		      "Sum"
       SrcPort		      1
@@ -2128,22 +2022,6 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      281
-      SrcBlock		      "Input_Disturbance1"
-      SrcPort		      1
-      Points		      [38, 0; 0, 60]
-      DstBlock		      "Sum2"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      28
-      SrcBlock		      "Output_Disturbance1"
-      SrcPort		      1
-      Points		      [35, 0]
-      DstBlock		      "Sum1"
-      DstPort		      1
-    }
-    Line {
       ZOrder		      31
       SrcBlock		      "G(p)"
       SrcPort		      1
@@ -2158,12 +2036,51 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      287
-      SrcBlock		      "Input_Disturbance2"
+      ZOrder		      422
+      SrcBlock		      "Saturation"
       SrcPort		      1
-      Points		      [40, 0; 0, 45]
-      DstBlock		      "Sum5"
-      DstPort		      1
+      Points		      [25, 0]
+      Branch {
+	ZOrder			423
+	Points			[0, -70; 458, 0]
+	Branch {
+	  ZOrder		  385
+	  Points		  [716, 0]
+	  Branch {
+	    ZOrder		    388
+	    Points		    [0, 405; 22, 0]
+	    Branch {
+	      ZOrder		      390
+	      Points		      [0, 280; -370, 0; 0, 95]
+	      DstBlock		      "Sum19"
+	      DstPort		      1
+	    }
+	    Branch {
+	      ZOrder		      389
+	      DstBlock		      "Sum11"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    ZOrder		    387
+	    Points		    [19, 0; 0, 55]
+	    DstBlock		    "Sum7"
+	    DstPort		    1
+	  }
+	}
+	Branch {
+	  ZOrder		  384
+	  Points		  [0, 60]
+	  DstBlock		  "Sum2"
+	  DstPort		  1
+	}
+      }
+      Branch {
+	ZOrder			393
+	Points			[0, 280; 465, 0]
+	DstBlock		"Sum5"
+	DstPort			1
+      }
     }
     Line {
       ZOrder		      121
@@ -2190,19 +2107,49 @@ Model {
       DstPort		      2
     }
     Line {
-      ZOrder		      124
-      SrcBlock		      "Output_Disturbance2"
+      ZOrder		      425
+      SrcBlock		      "Saturation1"
       SrcPort		      1
-      Points		      [35, 0]
-      DstBlock		      "Sum4"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      126
-      SrcBlock		      "Step1"
-      SrcPort		      1
-      DstBlock		      "Sum3"
-      DstPort		      1
+      Points		      [785, 0; 0, 3]
+      Branch {
+	ZOrder			428
+	DstBlock		"Sum1"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			426
+	Points			[720, 0; 0, 18]
+	Branch {
+	  ZOrder		  379
+	  Points		  [143, 0; 0, 360]
+	  Branch {
+	    ZOrder		    397
+	    Points		    [-893, 0]
+	    DstBlock		    "Sum4"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    396
+	    Points		    [0, 69]
+	    Branch {
+	      ZOrder		      383
+	      DstBlock		      "Sum10"
+	      DstPort		      1
+	    }
+	    Branch {
+	      ZOrder		      381
+	      Points		      [78, 0; 0, 370]
+	      DstBlock		      "Sum17"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Branch {
+	  ZOrder		  378
+	  DstBlock		  "Sum6"
+	  DstPort		  1
+	}
+      }
     }
     Line {
       ZOrder		      127
@@ -2289,13 +2236,6 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      146
-      SrcBlock		      "Step3"
-      SrcPort		      1
-      DstBlock		      "Sum9"
-      DstPort		      1
-    }
-    Line {
       ZOrder		      151
       SrcBlock		      "Sum9"
       SrcPort		      1
@@ -2310,22 +2250,6 @@ Model {
 	DstBlock		"Gain3"
 	DstPort			1
       }
-    }
-    Line {
-      ZOrder		      278
-      SrcBlock		      "Input_Disturbance4"
-      SrcPort		      1
-      Points		      [35, 0; 0, 55]
-      DstBlock		      "Sum11"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      153
-      SrcBlock		      "Output_Disturbance4"
-      SrcPort		      1
-      Points		      [40, 0]
-      DstBlock		      "Sum10"
-      DstPort		      1
     }
     Line {
       ZOrder		      156
@@ -2411,14 +2335,6 @@ Model {
       DstPort		      2
     }
     Line {
-      ZOrder		      210
-      SrcBlock		      "Output_Disturbance3"
-      SrcPort		      1
-      Points		      [45, 0]
-      DstBlock		      "Sum6"
-      DstPort		      1
-    }
-    Line {
       ZOrder		      214
       SrcBlock		      "Sum8"
       SrcPort		      1
@@ -2431,21 +2347,6 @@ Model {
       SrcBlock		      "Derivative2"
       SrcPort		      1
       DstBlock		      "Gain8"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      216
-      SrcBlock		      "Step2"
-      SrcPort		      1
-      DstBlock		      "Sum8"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      254
-      SrcBlock		      "Input_Disturbance3"
-      SrcPort		      1
-      Points		      [42, 0; 0, 55]
-      DstBlock		      "Sum7"
       DstPort		      1
     }
     Line {
@@ -2582,14 +2483,6 @@ Model {
       DstPort		      2
     }
     Line {
-      ZOrder		      297
-      SrcBlock		      "Input_Disturbance5"
-      SrcPort		      1
-      Points		      [38, 0; 0, 60]
-      DstBlock		      "Sum19"
-      DstPort		      1
-    }
-    Line {
       ZOrder		      298
       SrcBlock		      "Random\nNoise5"
       SrcPort		      1
@@ -2597,11 +2490,49 @@ Model {
       DstPort		      2
     }
     Line {
-      ZOrder		      311
-      SrcBlock		      "Step4"
+      ZOrder		      2
+      SrcBlock		      "Step"
       SrcPort		      1
-      DstBlock		      "Sum19"
-      DstPort		      2
+      Points		      [199, 0; 0, 5]
+      Branch {
+	ZOrder			368
+	Points			[0, 165]
+	Branch {
+	  ZOrder		  372
+	  Points		  [0, 160]
+	  Branch {
+	    ZOrder		    375
+	    Points		    [0, 390]
+	    DstBlock		    "Sum19"
+	    DstPort		    2
+	  }
+	  Branch {
+	    ZOrder		    374
+	    DstBlock		    "Sum3"
+	    DstPort		    1
+	  }
+	}
+	Branch {
+	  ZOrder		  371
+	  Points		  [689, 0; 0, -175; 46, 0]
+	  Branch {
+	    ZOrder		    370
+	    Points		    [0, 350]
+	    DstBlock		    "Sum9"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    369
+	    DstBlock		    "Sum8"
+	    DstPort		    1
+	  }
+	}
+      }
+      Branch {
+	ZOrder			367
+	DstBlock		"Sum"
+	DstPort			1
+      }
     }
     Line {
       ZOrder		      301
@@ -2609,14 +2540,6 @@ Model {
       SrcPort		      1
       DstBlock		      "Sum17"
       DstPort		      2
-    }
-    Line {
-      ZOrder		      303
-      SrcBlock		      "Output_Disturbance5"
-      SrcPort		      1
-      Points		      [35, 0]
-      DstBlock		      "Sum17"
-      DstPort		      1
     }
     Line {
       ZOrder		      306
@@ -2649,6 +2572,34 @@ Model {
       DstBlock		      "Sum19"
       DstPort		      3
     }
+    Line {
+      ZOrder		      401
+      SrcBlock		      "Step1"
+      SrcPort		      1
+      DstBlock		      "Derivative3"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      404
+      SrcBlock		      "Step2"
+      SrcPort		      1
+      DstBlock		      "Derivative4"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      424
+      SrcBlock		      "Derivative3"
+      SrcPort		      1
+      DstBlock		      "Saturation"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      427
+      SrcBlock		      "Derivative4"
+      SrcPort		      1
+      DstBlock		      "Saturation1"
+      DstPort		      1
+    }
     Annotation {
       SID		      "94"
       Name		      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -2660,6 +2611,7 @@ Model {
       Position		      [282, 254, 350, 277]
       InternalMargins	      [0, 0, 0, 0]
       Interpreter	      "rich"
+      ZOrder		      -1
     }
     Annotation {
       SID		      "95"
