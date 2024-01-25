@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.14"
+    ComputedModelVersion    "1.15"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -94,9 +94,9 @@ Model {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[1820.0, 806.0]
-	ZoomFactor		[0.8]
-	Offset			[-478.09836156637789, -169.30813921335221]
-	SceneRectInView		[-478.09836156637789, -169.30813921335221, 2275.0, 1007.5]
+	ZoomFactor		[1.25]
+	Offset			[-410.99836156637775, 12.041860786647703]
+	SceneRectInView		[-410.99836156637775, 12.041860786647703, 1456.0, 644.8]
       }
       Array {
 	Type			"Simulink.DockComponentInfo"
@@ -156,9 +156,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "AbdelRaHmaN ShRieF"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jan 25 18:35:49 2024"
-  RTWModifiedTimeStamp	  628106873
-  ModelVersionFormat	  "%<AutoIncrement:1.14>"
+  LastModifiedDate	  "Thu Jan 25 22:25:13 2024"
+  RTWModifiedTimeStamp	  628122308
+  ModelVersionFormat	  "%<AutoIncrement:1.15>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -1234,9 +1234,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "80"
+    ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "117"
+    SIDHighWatermark	    "119"
     SimulinkSubDomain	    "Simulink"
     Block {
       BlockType		      Clock
@@ -1707,7 +1707,7 @@ Model {
       BlockType		      Step
       Name		      "Step"
       SID		      "4"
-      Position		      [-185, 170, -155, 200]
+      Position		      [-90, 175, -60, 205]
       ZOrder		      312
       AttributesFormatString  "%<Name>"
       After		      "sp"
@@ -2493,7 +2493,7 @@ Model {
       ZOrder		      2
       SrcBlock		      "Step"
       SrcPort		      1
-      Points		      [199, 0; 0, 5]
+      Points		      [104, 0]
       Branch {
 	ZOrder			368
 	Points			[0, 165]
